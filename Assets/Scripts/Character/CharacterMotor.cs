@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class CharacterMotor : MonoBehaviour
 {
+    private Rigidbody2D myRigidbody;
+
     private PlayerInput inputs;
     private InputAction moveAction;
 
@@ -17,6 +19,7 @@ public class CharacterMotor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        myRigidbody = GetComponent<Rigidbody2D>();
         manager = GameManager.GetInstance();
         inputs = manager.GetInputs();
 
@@ -30,6 +33,7 @@ public class CharacterMotor : MonoBehaviour
 
         velocity = vMoveValue * speed;
 
-        transform.position += new Vector3(velocity.x * Time.fixedDeltaTime, velocity.y * Time.fixedDeltaTime, 0);
+        myRigidbody.MovePosition(transform.position + new Vector3(velocity.x * Time.fixedDeltaTime, velocity.y * Time.fixedDeltaTime, 0));
+
     }
 }
