@@ -10,6 +10,7 @@ public class CharacterMotor : MonoBehaviour
 
     private PlayerInput inputs;
     private InputAction moveAction;
+    private Animator animator;
 
     private GameManager manager;
 
@@ -20,6 +21,7 @@ public class CharacterMotor : MonoBehaviour
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         manager = GameManager.GetInstance();
         inputs = manager.GetInputs();
 
@@ -33,7 +35,26 @@ public class CharacterMotor : MonoBehaviour
 
         velocity = vMoveValue * speed;
 
-        myRigidbody.MovePosition(transform.position + new Vector3(velocity.x * Time.fixedDeltaTime, velocity.y * Time.fixedDeltaTime, 0));
+        UpdateanimationAndMove();
+    }
 
+    void UpdateanimationAndMove()
+    {
+        if (velocity != Vector2.zero)
+        {
+            MoveCharacter();
+            animator.SetFloat("moveX", velocity.x);
+            animator.SetFloat("moveY", velocity.y);
+            animator.SetBool("moving", true);
+        }
+        else
+        {
+            animator.SetBool("moving", false);
+        }
+    }
+
+    void MoveCharacter()
+    {
+        myRigidbody.MovePosition(transform.position + new Vector3(velocity.x * Time.fixedDeltaTime, velocity.y * Time.fixedDeltaTime, 0));
     }
 }
