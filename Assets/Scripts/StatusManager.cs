@@ -30,9 +30,7 @@ public class StatusManager : MonoBehaviour
                 if (!isAttacked)
                 {
                     isAttacked = true;
-                    Debug.Log("Collisions");
                     //setBattleData(other);
-                    Debug.Log("Data Initialized");
                     LevelLoader.instance.LoadLevel("BattleArena");
                 }
             }

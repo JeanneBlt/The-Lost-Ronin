@@ -9,14 +9,13 @@ public class LevelLoader : MonoBehaviour
 
     public Animator transition;
     public float transitionTime = 1f;
-
     #region Singleton
     public static LevelLoader instance;
 
     void Awake()
     {
         instance = this;
-        //DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
     #endregion
 
@@ -39,15 +38,10 @@ public class LevelLoader : MonoBehaviour
 
     IEnumerator LoadNamedLevel(string levelName)
     {
-        // Start transition animation
         transition.SetTrigger("FadeIn");
-
+        // Start transition animation
         yield return new WaitForSeconds(transitionTime);
-
         SceneManager.LoadScene(levelName);
-
-        // End transition animation
-        transition.SetTrigger("FadeOut");
     }
 
 }
