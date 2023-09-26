@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255797f7cbed3f64682ae15c868ff32d, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  charName: name
+  charName: Player
   position:
-  - 0
-  - 0
+  - 6.1020722
+  - -0.20208211
   characterGameObject: {fileID: 0}
   level: 1
   maxHealth: 100

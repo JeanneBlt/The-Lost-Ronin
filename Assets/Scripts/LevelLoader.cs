@@ -16,7 +16,7 @@ public class LevelLoader : MonoBehaviour
     void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
     #endregion
 
@@ -40,14 +40,14 @@ public class LevelLoader : MonoBehaviour
     IEnumerator LoadNamedLevel(string levelName)
     {
         // Start transition animation
-        transition.SetTrigger("Start");
+        transition.SetTrigger("FadeIn");
 
         yield return new WaitForSeconds(transitionTime);
 
         SceneManager.LoadScene(levelName);
 
         // End transition animation
-        transition.SetTrigger("End");
+        transition.SetTrigger("FadeOut");
     }
 
 }

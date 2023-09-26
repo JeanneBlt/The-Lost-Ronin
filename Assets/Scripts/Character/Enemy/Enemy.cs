@@ -12,6 +12,7 @@ public class Enemy : StateEnemy
     public float attackRadius;
     public Transform homePosition;
     public Animator anim;
+    public CharacterStatus characterStatus;
 
     // Start is called before the first frame update
     void Start()
