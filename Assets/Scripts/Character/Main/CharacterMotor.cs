@@ -15,7 +15,7 @@ public class CharacterMotor : MonoBehaviour
     private GameManager manager;
 
     private Vector2 velocity = Vector2.zero;
-    [SerializeField] private float speed = 5f;
+    public static float speed = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -57,4 +57,5 @@ public class CharacterMotor : MonoBehaviour
     {
         myRigidbody.MovePosition(transform.position + new Vector3(velocity.x * Time.fixedDeltaTime, velocity.y * Time.fixedDeltaTime, 0));
     }
+
 }

@@ -30,6 +30,8 @@ public class StatusManager : MonoBehaviour
                 if (!isAttacked)
                 {
                     isAttacked = true;
+                    CharacterMotor characterMotor = GetComponent<CharacterMotor>();
+                    CharacterMotor.speed = 0f;
                     //setBattleData(other);
                     LevelLoader.instance.LoadLevel("BattleArena");
                 }
