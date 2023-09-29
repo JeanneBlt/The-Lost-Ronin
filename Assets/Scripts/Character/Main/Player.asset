@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Player
   position:
-  - 6.1020722
-  - -0.20208211
-  characterGameObject: {fileID: 0}
+  - 0.06776206
+  - -0.060660705
+  characterGameObject: {fileID: 7968549352992539574, guid: 25cffa4406d7da544b5177c789b31297, type: 3}
   level: 1
   maxHealth: 100
   maxMana: 100

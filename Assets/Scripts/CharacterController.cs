@@ -12,15 +12,4 @@ public class CharacterController : MonoBehaviour
        
     }
 
- 
-
-    public void TakeDamage(float damage)
-    {
-        characterStatus.health -= damage;
-
-        if (characterStatus.health <= 0)
-        {
- 
-        }
-    }
 }
