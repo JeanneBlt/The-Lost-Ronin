@@ -32,8 +32,8 @@ public class StatusManager : MonoBehaviour
                     isAttacked = true;
                     CharacterMotor characterMotor = GetComponent<CharacterMotor>();
                     CharacterMotor.speed = 0f;
-                    setBattleData(other);
-                    LevelLoader.instance.LoadLevel("BattleArena");
+                    setBattleData(other); 
+                    LevelLoader.instance.LoadLevel("BattleArena"); 
                 }
             }
         }
@@ -46,8 +46,10 @@ public class StatusManager : MonoBehaviour
         playerStatus.position[1] = this.transform.position.y;
 
         // Enemy Data
-        CharacterStatus status = other.gameObject.GetComponent<CharacterController>().characterStatus;
+        CharacterStatus status = other.gameObject.GetComponent<CharacterStatusHolder>().enemyStatus;
+        enemyStatus = status;
         enemyStatus.charName = status.charName;
+        Debug.Log(enemyStatus.charName);
         enemyStatus.characterGameObject = status.characterGameObject.transform.GetChild(0).gameObject;
         enemyStatus.health = status.health;
         enemyStatus.maxHealth = status.maxHealth;
