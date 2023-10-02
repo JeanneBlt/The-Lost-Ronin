@@ -96,6 +96,7 @@ public class BattleSystemManager : MonoBehaviour
         // allow only a single action per turn
         if (!hasClicked)
         {
+            Debug.Log("you attack!");
             StartCoroutine(PlayerAttack());
 
             // block user from repeatedly 
@@ -174,7 +175,8 @@ public class BattleSystemManager : MonoBehaviour
             // of message or play a victory fanfare
             // here
             yield return new WaitForSeconds(1);
-            LevelLoader.instance.LoadLevel("TestLevel");
+            Debug.Log("win");
+            LevelLoader.instance.LoadLevel("SampleScene");
         }
         // otherwise check if we lost
         // You probably want to display some kind of
@@ -185,8 +187,8 @@ public class BattleSystemManager : MonoBehaviour
             // you may wish to display some kind
             // of message or play a sad tune here!
             yield return new WaitForSeconds(1);
-
-            LevelLoader.instance.LoadLevel("TestLevel");
+            Debug.Log("lost");
+            LevelLoader.instance.LoadLevel("SampleScene");
         }
     }
 

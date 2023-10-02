@@ -11,11 +11,10 @@ public class StatusHUD : MonoBehaviour
 
     public void SetStatusHUD(CharacterStatus status)
     {
-        float currentHealth = status.health * (100 / status.maxHealth);
-        float currentMana = status.mana * (100 / status.maxMana);
+        float currentHealth = status.health;
 
         statusHPBar.fillAmount = currentHealth / 100;
-        statusHPValue.text = status.health + "/" + status.maxHealth;
+        statusHPValue.text = status.health.ToString();
     }
 
     public void SetHP(CharacterStatus status, float hp)
@@ -36,7 +35,7 @@ public class StatusHUD : MonoBehaviour
                 status.health += _fAmount;
                 statusHPBar.fillAmount += _dAmount;
                 if (status.health <= status.maxHealth)
-                    statusHPValue.text = status.health + "/" + status.maxHealth;
+                    statusHPValue.text = status.health.ToString();
                 yield return new WaitForSeconds(fillDelay);
             }
         }
@@ -49,7 +48,7 @@ public class StatusHUD : MonoBehaviour
                 status.health -= _fAmount;
                 statusHPBar.fillAmount -= _dAmount;
                 if (status.health >= 0)
-                    statusHPValue.text = status.health + "/" + status.maxHealth;
+                    statusHPValue.text = status.health.ToString();
 
                 yield return new WaitForSeconds(fillDelay);
             }

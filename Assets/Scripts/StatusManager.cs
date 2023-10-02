@@ -49,8 +49,8 @@ public class StatusManager : MonoBehaviour
         CharacterStatus status = other.gameObject.GetComponent<CharacterStatusHolder>().enemyStatus;
         enemyStatus = status;
         enemyStatus.charName = status.charName;
-        Debug.Log(enemyStatus.charName);
-        enemyStatus.characterGameObject = status.characterGameObject.transform.GetChild(0).gameObject;
+        //enemyStatus.characterGameObject = status.characterGameObject.transform.GetChild(0).gameObject;
+        enemyStatus.characterGameObject = status.characterGameObject;
         enemyStatus.health = status.health;
         enemyStatus.maxHealth = status.maxHealth;
         enemyStatus.mana = status.mana;
