@@ -30,8 +30,17 @@ public class BattleSystemManager : MonoBehaviour
     IEnumerator BeginBattle()
     {
         // spawn characters on the platforms
+        Sprite enemySprite = enemyStatus.characterSprite;
+
+        // Utilisez ce sprite pour définir le sprite de l'ennemi
         enemy = Instantiate(enemyStatus.characterGameObject, enemyBattlePosition); enemy.SetActive(true);
+        SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
+        enemySpriteRenderer.sprite = enemySprite; // Utilisez le sprite de l'ennemi
+
+        Sprite playerSprite = playerStatus.characterSprite;
         player = Instantiate(playerStatus.characterGameObject.transform.GetChild(0).gameObject, playerBattlePosition); player.SetActive(true);
+        SpriteRenderer playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
+        playerSpriteRenderer.sprite = playerSprite;
 
         // make the characters sprites invisible in the beginning
         enemy.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
@@ -44,6 +53,7 @@ public class BattleSystemManager : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         // fade in our characters sprites
+
         yield return StartCoroutine(FadeInOpponents());
 
         yield return new WaitForSeconds(2);
@@ -109,7 +119,8 @@ public class BattleSystemManager : MonoBehaviour
     {
         // trigger the execution of attack animation
         // in 'BattlePresence' animator
-        player.GetComponent<Animator>().SetTrigger("Attack");
+
+        //player.GetComponent<Animator>().SetTrigger("Attack");
 
         yield return new WaitForSeconds(2);
 
@@ -118,6 +129,7 @@ public class BattleSystemManager : MonoBehaviour
         // more complex logic here.
         enemyStatusHUD.SetHP(enemyStatus, 50);
         yield return StatusHUD.statusBarCoroutine;
+
         if (enemyStatus.health <= 0)
         {
             // if the enemy health drops to 0 
@@ -146,7 +158,8 @@ public class BattleSystemManager : MonoBehaviour
 
         // play attack animation by triggering
         // it inside the enemy animator
-        enemy.GetComponent<Animator>().SetTrigger("Attack");
+
+        //enemy.GetComponent<Animator>().SetTrigger("Attack");
 
         yield return new WaitForSeconds(2);
 

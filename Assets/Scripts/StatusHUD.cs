@@ -7,6 +7,7 @@ public class StatusHUD : MonoBehaviour
 {
     public Image statusHPBar;
     public Text statusHPValue;
+    public Text statusName;
     public static Coroutine statusBarCoroutine;
 
 
@@ -16,6 +17,7 @@ public class StatusHUD : MonoBehaviour
 
         statusHPBar.fillAmount = currentHealth / 100;
         statusHPValue.text = status.health.ToString();
+        statusName.text = status.name.ToString();
     }
 
     public void SetHP(CharacterStatus status, float hp)

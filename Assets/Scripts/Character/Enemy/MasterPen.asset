@@ -22,3 +22,4 @@ MonoBehaviour:
   maxMana: 100
   health: 100
   mana: 100
+  characterSprite: {fileID: 939674600, guid: 4b7d6e1766c37ec4f960a75142a76ca6, type: 3}
