@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 67225315}
   - component: {fileID: 67225314}
   m_Layer: 5
-  m_Name: EnemyHud
+  m_Name: PlayerHud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -353,11 +353,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -728,11 +728,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -2066,7 +2066,7 @@ GameObject:
   - component: {fileID: 1843677356}
   - component: {fileID: 1843677355}
   m_Layer: 5
-  m_Name: PlayerHud
+  m_Name: EnemyHud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2194,8 +2194,8 @@ MonoBehaviour:
   playerBattlePosition: {fileID: 598511112}
   playerStatus: {fileID: 11400000, guid: 04ef235ff5c9588458c9c58ecd78cd9b, type: 2}
   enemyStatus: {fileID: 11400000, guid: 8b487052f8b2a694ba5cea6e9ebb210e, type: 2}
-  playerStatusHUD: {fileID: 1843677355}
-  enemyStatusHUD: {fileID: 67225314}
+  playerStatusHUD: {fileID: 67225314}
+  enemyStatusHUD: {fileID: 1843677355}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

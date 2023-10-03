@@ -117,12 +117,13 @@ public class BattleSystemManager : MonoBehaviour
         // amount of 10. You probably want to have some
         // more complex logic here.
         enemyStatusHUD.SetHP(enemyStatus, 50);
-
+        yield return StatusHUD.statusBarCoroutine;
         if (enemyStatus.health <= 0)
         {
             // if the enemy health drops to 0 
             // we won!
             battleState = BattleState.WIN;
+            Debug.Log("You won!");
             yield return StartCoroutine(EndBattle());
         }
         else

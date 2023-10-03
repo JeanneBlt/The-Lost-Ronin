@@ -7,6 +7,7 @@ public class StatusHUD : MonoBehaviour
 {
     public Image statusHPBar;
     public Text statusHPValue;
+    public static Coroutine statusBarCoroutine;
 
 
     public void SetStatusHUD(CharacterStatus status)
@@ -19,7 +20,7 @@ public class StatusHUD : MonoBehaviour
 
     public void SetHP(CharacterStatus status, float hp)
     {
-        StartCoroutine(GraduallySetStatusBar(status, hp, false, 10, 0.05f));
+        statusBarCoroutine = StartCoroutine(GraduallySetStatusBar(status, hp, false, 10, 0.05f));
     }
 
     IEnumerator GraduallySetStatusBar(CharacterStatus status, float amount, bool isIncrease, int fillTimes, float fillDelay)
@@ -55,4 +56,5 @@ public class StatusHUD : MonoBehaviour
         }
 
     }
+
 }

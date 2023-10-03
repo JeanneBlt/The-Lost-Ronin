@@ -16,7 +16,7 @@ MonoBehaviour:
   position:
   - 0
   - 0
-  characterGameObject: {fileID: 7968549352992539574, guid: 25cffa4406d7da544b5177c789b31297, type: 3}
+  characterGameObject: {fileID: 3995229177066910985, guid: 25cffa4406d7da544b5177c789b31297, type: 3}
   level: 1
   maxHealth: 100
   maxMana: 100
