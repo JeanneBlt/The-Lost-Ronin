@@ -12,10 +12,17 @@ public class LevelLoader : MonoBehaviour
     #region Singleton
     public static LevelLoader instance;
 
-    void Awake()
+    private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            // Une instance existe déjà, détruis celle-ci
+            Destroy(gameObject);
+            return;
+        }
+
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
     #endregion
 
@@ -28,7 +35,7 @@ public class LevelLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void LoadLevel(string levelName)
