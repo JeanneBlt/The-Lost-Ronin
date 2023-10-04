@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255797f7cbed3f64682ae15c868ff32d, type: 3}
+  m_Name: MasterPen
+  m_EditorClassIdentifier: 
+  charName: MasterPen
+  position:
+  - 0
+  - 0
+  characterGameObject: {fileID: 3995229177066910985, guid: 25cffa4406d7da544b5177c789b31297, type: 3}
+  level: 1
+  maxHealth: 100
+  maxMana: 100
+  health: 100
+  mana: 100
+  characterSprite: {fileID: 939674600, guid: 4b7d6e1766c37ec4f960a75142a76ca6, type: 3}

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255797f7cbed3f64682ae15c868ff32d, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  charName: Player
+  position:
+  - 0.06776206
+  - -0.060660705
+  characterGameObject: {fileID: 7968549352992539574, guid: 25cffa4406d7da544b5177c789b31297, type: 3}
+  level: 1
+  maxHealth: 100
+  maxMana: 100
+  health: 100
+  mana: 100
+  characterSprite: {fileID: -740959101, guid: dea7e3047dac6a34c8f4b608cebb33d8, type: 3}
