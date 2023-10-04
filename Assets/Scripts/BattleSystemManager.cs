@@ -190,6 +190,8 @@ public class BattleSystemManager : MonoBehaviour
             // here
             yield return new WaitForSeconds(1);
             Debug.Log("win");
+            CharacterMotor characterMotor = GetComponent<CharacterMotor>();
+            CharacterMotor.speed = 5f;
             LevelLoader.instance.LoadLevel("SampleScene");
         }
         // otherwise check if we lost
@@ -202,6 +204,8 @@ public class BattleSystemManager : MonoBehaviour
             // of message or play a sad tune here!
             yield return new WaitForSeconds(1);
             Debug.Log("lost");
+            CharacterMotor characterMotor = GetComponent<CharacterMotor>();
+            CharacterMotor.speed = 5f;
             LevelLoader.instance.LoadLevel("SampleScene");
         }
     }
