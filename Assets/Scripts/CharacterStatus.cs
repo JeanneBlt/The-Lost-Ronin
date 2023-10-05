@@ -14,4 +14,5 @@ public class CharacterStatus : ScriptableObject
     public float health = 100;
     public float mana = 100;
     public Sprite characterSprite;
+    public float joinParty;
 }
