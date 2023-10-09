@@ -36,7 +36,7 @@ public class CharacterInfos : MonoBehaviour
         
     }
 
-    public static void AddItem(ItemID _id, int _number)
+    public static void AddItem(ItemID _id, int _number) 
     {
         inventory[((int )_id)].number += _number;
 
