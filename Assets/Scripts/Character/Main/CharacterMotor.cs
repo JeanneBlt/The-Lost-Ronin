@@ -6,16 +6,16 @@ using UnityEngine.InputSystem;
 
 public class CharacterMotor : MonoBehaviour
 {
+    public static float speed = 5f;
+
     private Rigidbody2D myRigidbody;
 
-    private PlayerInput inputs;
+    private Vector2 velocity = Vector2.zero;
+
+    private InputsManager inputs;
     private InputAction moveAction;
     private Animator animator;
-
     private GameManager manager;
-
-    private Vector2 velocity = Vector2.zero;
-    public static float speed = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,15 +23,13 @@ public class CharacterMotor : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         manager = GameManager.GetInstance();
-        inputs = manager.GetInputs();
-
-        moveAction = inputs.actions.FindAction("Move");
+        inputs = InputsManager.instance;
     }
 
     // Update is called once per frame
     public void FixedUpdate()
     {
-        Vector2 vMoveValue = moveAction.ReadValue<Vector2>();
+        Vector2 vMoveValue = inputs.GetMovingInputs().normalized;
 
         velocity = vMoveValue * speed;
 
