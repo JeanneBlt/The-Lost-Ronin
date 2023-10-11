@@ -2845,38 +2845,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &207676658
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 207676659}
-  m_Layer: 0
-  m_Name: ---UI---
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &207676659
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 207676658}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2586056, y: -0.043453917, z: 0.05558274}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 760701527}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &262988378
 GameObject:
   m_ObjectHideFlags: 0
@@ -3375,12 +3343,12 @@ Transform:
   m_GameObject: {fileID: 760701525}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0896974, y: -0.032920785, z: -0.055936933}
+  m_LocalPosition: {x: -0.16890824, y: -0.0763747, z: -0.00035419315}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1765382645}
-  m_Father: {fileID: 207676659}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &760701528
 MonoBehaviour:
@@ -7211,6 +7179,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1372611042}
-  - {fileID: 207676659}
   - {fileID: 262988380}
   - {fileID: 1664979126}
+  - {fileID: 760701527}
