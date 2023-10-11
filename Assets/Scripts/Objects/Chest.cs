@@ -16,26 +16,21 @@ public class Chest : MonoBehaviour
     //Refs
     private GameManager manager;
 
-    //Inputs
-    private InputAction interactAction;
-
     private void Start()
     {
         manager = GameManager.GetInstance();
-        interactAction = manager.GetInputs().actions.FindAction("Interact");
+        InputsManager.instance.interactionEvent.AddListener(Interact);
     }
 
-    private void Update()
+    public void Interact()
     {
-        float interact = interactAction.ReadValue<float>();  
-
-        if (isReach && interact > 0)
+        if (isReach)
         {
             open = true;
             EmptyChest();
         }
 
-        else if (!isReach)
+        else
         {
             open = false;
         }
