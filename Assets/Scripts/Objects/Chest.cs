@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Chest : MonoBehaviour
 {
 
+    [SerializeField] private SpriteRenderer[] graphisms;
     //Stats
     [SerializeField] private Item[] content;
 
