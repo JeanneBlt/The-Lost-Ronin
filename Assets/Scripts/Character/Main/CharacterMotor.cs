@@ -33,10 +33,10 @@ public class CharacterMotor : MonoBehaviour
 
         velocity = vMoveValue * speed;
 
-        UpdateanimationAndMove();
+        UpdateAnimationAndMove();
     }
 
-    void UpdateanimationAndMove()
+    void UpdateAnimationAndMove()
     {
         if (velocity != Vector2.zero)
         {
