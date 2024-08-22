@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class BattleSystemManager : MonoBehaviour
+public class BattleSystemManager : InteractablesObjects
 {
+
+    [SerializeField] private string dialog;
+    [SerializeField] private Canvas battleCanvas;
+    [SerializeField] private GameObject uiToDisable;
+
+    private UIDialog uiDialog;
 
     private GameObject enemy;
     private GameObject player;
@@ -21,14 +28,55 @@ public class BattleSystemManager : MonoBehaviour
 
     private bool hasClicked = true;
 
+    //public void Awake()
+    //{
+    //    uiDialog = FindObjectOfType<UIDialog>();
+    //}
+
     void Start()
     {
-        battleState = BattleState.START;
-        StartCoroutine(BeginBattle());
+        battleCanvas.gameObject.SetActive(false);
+        uiDialog = FindObjectOfType<UIDialog>();
+        InputsManager.instance.interactionEvent.AddListener(Interact);
+    }
+
+    public override void Interact()
+    {
+        Debug.Log("Interact method called!");
+        if (uiDialog.IsDialogActive())
+        {
+            Debug.Log("Closing dialog...");
+            // Fermez le dialogue
+            uiDialog.CloseDialog();
+
+            // Désactivez l'UI
+            if (uiToDisable != null)
+            {
+                Debug.Log("Disabling UI");
+                uiToDisable.SetActive(false);
+            }
+
+            // Démarrez la bataille après avoir fermé le dialogue
+            StartCoroutine(StartBattleAfterDialog());
+        }
+    }
+
+
+    private IEnumerator StartBattleAfterDialog()
+    {
+        // Attendre que le dialogue soit fermé avant de commencer la bataille
+        yield return new WaitUntil(() => !uiDialog.IsDialogActive());
+
+        // Afficher le canvas de bataille
+        battleCanvas.gameObject.SetActive(true);
+
+        // Commencer la bataille
+        yield return StartCoroutine(BeginBattle());
     }
 
     IEnumerator BeginBattle()
     {
+        battleCanvas.gameObject.SetActive(true);
         // spawn characters on the platforms
         Sprite enemySprite = enemyStatus.characterSprite;
 
