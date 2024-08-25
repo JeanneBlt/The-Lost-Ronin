@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Collider2D))]
 
-public abstract class InteractablesObjects : MonoBehaviour
+public abstract class InteractableObjects : MonoBehaviour
 {
 
     protected bool isReach = false;

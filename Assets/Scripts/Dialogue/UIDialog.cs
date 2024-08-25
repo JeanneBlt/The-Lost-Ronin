@@ -15,6 +15,7 @@ public class UIDialog : MonoBehaviour
     private void Awake()
     {
         canvas = GetComponent<Canvas>();
+        CloseDialog();
         isDialogVisible = false;
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Chest : InteractablesObjects
+public class Chest : InteractableObjects
 {
 
     [SerializeField] private SpriteRenderer[] graphisms;

@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class BattleSystemManager : InteractablesObjects
+public class BattleSystemManager : InteractableObjects
 {
 
     [SerializeField] private string dialog;
     [SerializeField] private Canvas battleCanvas;
-    [SerializeField] private GameObject uiToDisable;
 
     private UIDialog uiDialog;
 
@@ -33,50 +32,37 @@ public class BattleSystemManager : InteractablesObjects
     //    uiDialog = FindObjectOfType<UIDialog>();
     //}
 
-    void Start()
+    void Awake()
     {
         battleCanvas.gameObject.SetActive(false);
         uiDialog = FindObjectOfType<UIDialog>();
-        InputsManager.instance.interactionEvent.AddListener(Interact);
     }
 
     public override void Interact()
     {
-        Debug.Log("Interact method called!");
-        if (uiDialog.IsDialogActive())
+        if (isReach)
         {
-            Debug.Log("Closing dialog...");
-            // Fermez le dialogue
+            uiDialog.SetDialog(dialog);
             uiDialog.CloseDialog();
-
-            // Désactivez l'UI
-            if (uiToDisable != null)
-            {
-                Debug.Log("Disabling UI");
-                uiToDisable.SetActive(false);
-            }
-
-            // Démarrez la bataille après avoir fermé le dialogue
-            StartCoroutine(StartBattleAfterDialog());
+            battleCanvas.gameObject.SetActive(true);
+            battleState = BattleState.START;
+            StartCoroutine(BeginBattle());
+        }
+        else
+        {
+            uiDialog.SetDialog(dialog);
+            isReach = true;
         }
     }
 
-
-    private IEnumerator StartBattleAfterDialog()
-    {
-        // Attendre que le dialogue soit fermé avant de commencer la bataille
-        yield return new WaitUntil(() => !uiDialog.IsDialogActive());
-
-        // Afficher le canvas de bataille
-        battleCanvas.gameObject.SetActive(true);
-
-        // Commencer la bataille
-        yield return StartCoroutine(BeginBattle());
-    }
+    //void Start()
+    //{
+    //    battleState = BattleState.START;
+    //    StartCoroutine(BeginBattle());
+    //}
 
     IEnumerator BeginBattle()
     {
-        battleCanvas.gameObject.SetActive(true);
         // spawn characters on the platforms
         Sprite enemySprite = enemyStatus.characterSprite;
 
