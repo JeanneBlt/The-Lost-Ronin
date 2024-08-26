@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Player
   position:
-  - 0.06776206
-  - -0.060660705
+  - 6.345605
+  - 0.7262964
   characterGameObject: {fileID: 7968549352992539574, guid: 25cffa4406d7da544b5177c789b31297, type: 3}
   level: 1
   maxHealth: 100
@@ -23,3 +23,4 @@ MonoBehaviour:
   health: 100
   mana: 100
   characterSprite: {fileID: -740959101, guid: dea7e3047dac6a34c8f4b608cebb33d8, type: 3}
+  joinParty: 0

@@ -3325,6 +3325,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7969461714780902789, guid: 25cffa4406d7da544b5177c789b31297, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
@@ -3494,7 +3498,7 @@ MonoBehaviour:
   attackRadius: 1
   homePosition: {fileID: 0}
   anim: {fileID: 0}
-  characterStatus: {fileID: 0}
+  characterStatus: {fileID: 11400000, guid: 8b487052f8b2a694ba5cea6e9ebb210e, type: 2}
 --- !u!114 &1181916584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6836,7 +6840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStatus: {fileID: 11400000, guid: 04ef235ff5c9588458c9c58ecd78cd9b, type: 2}
-  enemyStatus: {fileID: 0}
+  enemyStatus: {fileID: 11400000, guid: 8b487052f8b2a694ba5cea6e9ebb210e, type: 2}
   isAttacked: 0
 --- !u!114 &1350642103
 MonoBehaviour:

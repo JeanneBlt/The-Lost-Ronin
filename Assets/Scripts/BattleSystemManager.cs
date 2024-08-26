@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BattleSystemManager : MonoBehaviour
 {
+    public NPC npc;
+
+    [SerializeField] private Canvas battleCanvas; 
 
     private GameObject enemy;
     private GameObject player;
@@ -21,8 +24,27 @@ public class BattleSystemManager : MonoBehaviour
 
     private bool hasClicked = true;
 
+    //public void StartBattle()
+    //{
+    //    battleState = BattleState.START;
+    //    StartCoroutine(BeginBattle());
+    //}
     void Start()
     {
+        battleCanvas.gameObject.SetActive(false);
+        StartCoroutine(StartDialogueThenBattle());
+    }
+
+    IEnumerator StartDialogueThenBattle()
+    {
+        // Début du dialogue
+        npc.StartDialogue();
+
+        // Attend que le dialogue soit terminé
+        yield return new WaitUntil(() => !npc.IsDialogueActive());
+
+        battleCanvas.gameObject.SetActive(true);
+        // Quand le dialogue est terminé, commencer la bataille
         battleState = BattleState.START;
         StartCoroutine(BeginBattle());
     }

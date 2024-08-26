@@ -12,6 +12,7 @@ public class InputsManager : MonoBehaviour
     private InputAction moveAction;
 
     [HideInInspector]public UnityEvent interactionEvent;
+    [HideInInspector] public UnityEvent dialogEvent;
 
     private PlayerInput inputs;
     private void Awake()
@@ -35,6 +36,7 @@ public class InputsManager : MonoBehaviour
     public void OnInteract()
     {
         interactionEvent.Invoke();
+        dialogEvent.Invoke();
     }
 
 }
