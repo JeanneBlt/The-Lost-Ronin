@@ -21,18 +21,25 @@ public abstract class InteractableObjects : MonoBehaviour
 
     public abstract void Interact();
 
+    //public void TriggerInteraction()
+    //{
+    //    Interact();
+    //}
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
+            Debug.Log("Player entered the trigger zone.");
             isReach = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" )
         {
+            Debug.Log("Player exited the trigger zone.");
             isReach = false;
             open = false;
             Interact();

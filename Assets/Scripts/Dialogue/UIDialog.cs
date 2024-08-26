@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 [RequireComponent(typeof(Canvas))]
 
 public class UIDialog : MonoBehaviour
 {
 
-    [SerializeField] private TMPro.TextMeshProUGUI contentText;
+    [SerializeField] private TextMeshProUGUI contentText;
+
 
     private bool isDialogVisible;
     private Canvas canvas;
@@ -19,10 +22,10 @@ public class UIDialog : MonoBehaviour
         isDialogVisible = false;
     }
 
-    public void SetDialog(string pContent)
+    public void SetDialog(Dialog pDialog)
     {
         canvas.enabled = true;
-        contentText.text = pContent;
+        contentText.text = pDialog.getCharName+"\n"+pDialog.getContent;
         isDialogVisible = true;
     }
 
