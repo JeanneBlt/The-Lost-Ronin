@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+[RequireComponent(typeof(InventoryData), typeof(InventoryDisplay))]
 
 public class InventoryController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    private InventoryData data;
+    private InventoryDisplay display;
+
+    private void Start()
     {
-        
+        data = GetComponent<InventoryData>();
+        display = GetComponent<InventoryDisplay>();
+
+        data.Init(this);
+        display.Init(this);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public int SlotNumber => data.SlotNumber;
+
 }
