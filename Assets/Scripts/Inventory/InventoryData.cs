@@ -17,6 +17,7 @@ public class SlotsInfos
 
     private ItemTemplate template { get; }
 
+    public string ItemName => template.ItemName;
     public int ItemId => template.ItemId;
 
     public int Stack => template.Stack;
@@ -46,4 +47,5 @@ public class InventoryData : MonoBehaviour
     }
 
     public int SlotNumber => slotNumber;
+    public SlotsInfos[] Slots=> slotsInfos;
 }

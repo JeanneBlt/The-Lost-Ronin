@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryDisplay : MonoBehaviour
@@ -18,5 +16,14 @@ public class InventoryDisplay : MonoBehaviour
             slots[i] = Instantiate(slotPrefab, transform.position, Quaternion.identity, slotCanvas.transform).GetComponent<SlotController>();
             slots[i].Init(i);
         }
+    }
+
+    public void UpdateDisplay(SlotsInfos[] pSlotInfos)
+    {
+        for(int i = 0; i < pSlotInfos.Length;i++)
+        {
+            slots[i].UpdateDisplay(pSlotInfos[i].ItemName, pSlotInfos[i].Number);
+        }
+
     }
 }
