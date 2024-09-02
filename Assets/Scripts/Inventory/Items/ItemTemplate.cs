@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Item", menuName = "ScriptableObjects/Item")]
 
-public class ItemsTemplate : ScriptableObject
+public class ItemTemplate : ScriptableObject
 {
  
  [Header("Main Infos")]
@@ -14,9 +14,9 @@ public class ItemsTemplate : ScriptableObject
  [Header("Item Infos")]
  [SerializeField] private int stack;
 
- private string getItemName => itemName;
- private int getId => id;
+ public string ItemName => itemName;
+ public int ItemId => id;
 
- private int getStack => stack;
+ public int Stack => stack;
 
 }

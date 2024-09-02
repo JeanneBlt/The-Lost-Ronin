@@ -3253,6 +3253,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNumber: 6
+  slotsInfos: []
+  templates:
+  - {fileID: 11400000, guid: 9b3865ef9b4be7a4b81f00b10239034f, type: 2}
+  - {fileID: 11400000, guid: 55293262e0bf82247948448cd5fa0a67, type: 2}
 --- !u!114 &630676426
 MonoBehaviour:
   m_ObjectHideFlags: 0
