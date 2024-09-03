@@ -18,8 +18,10 @@ gameObject.name= "Slot " + (pId + 1);
 
 public void UpdateDisplay(string pItemName, int pNumber)
 {
-    numberText.text=pNumber.ToString("  ");
-    itemName.text = pItemName;
+    bool vEmpty = pNumber == 0;
+
+    numberText.text = vEmpty ? "" : pNumber.ToString("00");
+    itemName.text = vEmpty ? null : pItemName;
 }
 
 }
