@@ -6,6 +6,9 @@ public class InventoryDisplay : MonoBehaviour
     [SerializeField] private Transform slotPrefab;
     [SerializeField] private Canvas slotCanvas;
     private InventoryController controller;
+    [SerializeField] private GameObject inventoryUI;  
+    private bool isInventoryOpen = false;
+
     public void Init(InventoryController pController)
     {
         controller = pController;

@@ -2727,6 +2727,7 @@ GameObject:
   - component: {fileID: 262988379}
   - component: {fileID: 262988381}
   - component: {fileID: 262988382}
+  - component: {fileID: 262988383}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2810,6 +2811,22 @@ MonoBehaviour:
   dialogEvent:
     m_PersistentCalls:
       m_Calls: []
+  inventoryEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &262988383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262988378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea47bcba904934c47bb47d3aaef7a39c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 630676417}
 --- !u!4 &342425541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3470231269459212249, guid: 0d86d47fe7b638f4f95984242fce7290, type: 3}
@@ -3241,6 +3258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotPrefab: {fileID: 4105298281510326438, guid: e3742006f567798419f8f66b7fa99f8c, type: 3}
   slotCanvas: {fileID: 431176450}
+  inventoryUI: {fileID: 676175008}
 --- !u!114 &630676425
 MonoBehaviour:
   m_ObjectHideFlags: 0

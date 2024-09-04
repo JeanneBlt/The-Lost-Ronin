@@ -11,10 +11,14 @@ public class InputsManager : MonoBehaviour
 
     private InputAction moveAction;
 
-    [HideInInspector]public UnityEvent interactionEvent;
+    [HideInInspector] public UnityEvent interactionEvent;
     [HideInInspector] public UnityEvent dialogEvent;
+    [HideInInspector] public UnityEvent inventoryEvent;
 
     private PlayerInput inputs;
+
+    private InventoryManager inventoryManager;
+
     private void Awake()
     {
         if (instance != null)
@@ -26,6 +30,8 @@ public class InputsManager : MonoBehaviour
         inputs = GetComponent<PlayerInput>();
 
         moveAction = inputs.actions.FindAction("Move");
+
+        inventoryManager = FindObjectOfType<InventoryManager>();
     }
 
     public Vector2 GetMovingInputs()
@@ -37,6 +43,11 @@ public class InputsManager : MonoBehaviour
     {
         interactionEvent.Invoke();
         dialogEvent.Invoke();
+    }
+
+    public void OnInventory()
+    {
+        inventoryManager.ToggleInventory();
     }
 
 }
