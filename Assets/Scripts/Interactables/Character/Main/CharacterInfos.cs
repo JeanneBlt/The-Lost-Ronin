@@ -38,21 +38,10 @@ public class CharacterInfos : MonoBehaviour
         {
             inventory.Add(new InventoryItem(item, quantity));
         }
-
-        UnityEngine.Debug.Log($"Ajouté : {item.ItemName} ({quantity}) dans l'inventaire");
     }
 
     public List<InventoryItem> GetInventory()
     {
         return inventory;
-    }
-
-    public void ShowInventory()
-    {
-        UnityEngine.Debug.Log("Inventaire:");
-        foreach (var item in inventory)
-        {
-            UnityEngine.Debug.Log($"{item.itemTemplate.ItemName} - Quantité : {item.quantity}");
-        }
     }
 }
