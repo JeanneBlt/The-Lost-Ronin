@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +9,14 @@ public class Chest : InteractableObjects
 
     [SerializeField] private SpriteRenderer[] graphisms;
 
-    [SerializeField] private Item[] content;
+    [System.Serializable]
+    public class ChestItem
+    {
+        public ItemTemplate itemTemplate;
+        public int quantity;          
+    }
+
+    [SerializeField] private ChestItem[] content;
 
     public override void Interact()
     {
@@ -24,12 +32,22 @@ public class Chest : InteractableObjects
         }
     }
 
+    //private void EmptyChest()
+    //{
+    //    foreach (var item in content) 
+    //    {
+    //        CharacterInfos.AddItem(item.id, item.number);
+    //        item.number = 0;
+    //    }
+    //}
+
     private void EmptyChest()
     {
-        foreach (var item in content) 
+        foreach (var chestItem in content)
         {
-            CharacterInfos.AddItem(item.id, item.number);
-            item.number = 0;
+            CharacterInfos.AddItemToInventory(chestItem.itemTemplate);
+
+            UnityEngine.Debug.Log($"Ajout de {chestItem.itemTemplate.ItemName} dans l'inventaire");
         }
     }
 }

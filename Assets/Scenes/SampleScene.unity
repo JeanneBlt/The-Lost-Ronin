@@ -7490,6 +7490,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6987340669283092968, guid: 0d86d47fe7b638f4f95984242fce7290, type: 3}
+      propertyPath: content.Array.data[0].quantity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987340669283092968, guid: 0d86d47fe7b638f4f95984242fce7290, type: 3}
+      propertyPath: content.Array.data[0].itemTemplate
+      value: 
+      objectReference: {fileID: 11400000, guid: 55293262e0bf82247948448cd5fa0a67, type: 2}
     - target: {fileID: 8197350395376615371, guid: 0d86d47fe7b638f4f95984242fce7290, type: 3}
       propertyPath: m_Name
       value: Chest

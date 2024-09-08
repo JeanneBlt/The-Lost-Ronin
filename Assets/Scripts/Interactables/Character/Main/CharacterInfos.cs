@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public enum ItemID
@@ -19,31 +20,47 @@ public class Item
 
 public class CharacterInfos : MonoBehaviour
 {
-    public static Item[] inventory;
+    //public static Item[] inventory;
+    //private GameManager manager;
+
+    //void Start()
+    //{
+    //    manager = GameManager.GetInstance();
+    //    inventory = new Item[1];
+    //    inventory[0]=new Item();
+    //}
+
+    //public static void AddItem(ItemID _id, int _number) 
+    //{
+    //    inventory[((int )_id)].number += _number;
+
+    //    Debug.Log("Inventory:");
+    //    foreach (Item item in inventory)
+    //    {
+    //        Debug.Log($"Item ID: {item.id}, Number: {item.number}");
+    //    }
+    //}
+
+    public static List<ItemTemplate> inventory = new List<ItemTemplate>();
     private GameManager manager;
 
-    // Start is called before the first frame update
     void Start()
     {
         manager = GameManager.GetInstance();
-        inventory = new Item[1];
-        inventory[0]=new Item();
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void AddItemToInventory(ItemTemplate item)
     {
-        
+        inventory.Add(item);
+        UnityEngine.Debug.Log($"Ajouté : {item.ItemName} dans l'inventaire");
     }
 
-    public static void AddItem(ItemID _id, int _number) 
+    public static void ShowInventory()
     {
-        inventory[((int )_id)].number += _number;
-
-        Debug.Log("Inventory:");
-        foreach (Item item in inventory)
+        UnityEngine.Debug.Log("Inventaire:");
+        foreach (var item in inventory)
         {
-            Debug.Log($"Item ID: {item.id}, Number: {item.number}");
+            UnityEngine.Debug.Log(item.ItemName);
         }
     }
 }
