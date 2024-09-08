@@ -39,7 +39,8 @@ public class Chest : InteractableObjects
             CharacterInfos characterInfos = FindObjectOfType<CharacterInfos>();
             characterInfos.AddItemToInventory(chestItem.itemTemplate, chestItem.quantity);
 
-            UnityEngine.Debug.Log($"Ajout de {chestItem.itemTemplate.ItemName} ({chestItem.quantity}) dans l'inventaire");
         }
+
+        content = new ChestItem[0];
     }
 }
