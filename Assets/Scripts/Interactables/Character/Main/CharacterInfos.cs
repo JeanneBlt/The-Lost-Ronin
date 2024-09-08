@@ -1,49 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
-public enum ItemID
-{
-    HealthPotion = 0,
-}
-
 [System.Serializable]
-public class Item
+public class InventoryItem
 {
-    [SerializeField] private string name;
+    public ItemTemplate itemTemplate;
+    public int quantity;
 
-    public ItemID id;
-
-    public int number = 0;
+    public InventoryItem(ItemTemplate template, int qty)
+    {
+        itemTemplate = template;
+        quantity = qty;
+    }
 }
 
 public class CharacterInfos : MonoBehaviour
 {
-    public static Item[] inventory;
+    [SerializeField] public List<InventoryItem> inventory = new List<InventoryItem>();
     private GameManager manager;
 
-    // Start is called before the first frame update
     void Start()
     {
         manager = GameManager.GetInstance();
-        inventory = new Item[1];
-        inventory[0]=new Item();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddItemToInventory(ItemTemplate item, int quantity)
     {
-        
-    }
+        InventoryItem existingItem = inventory.Find(i => i.itemTemplate == item);
 
-    public static void AddItem(ItemID _id, int _number) 
-    {
-        inventory[((int )_id)].number += _number;
-
-        Debug.Log("Inventory:");
-        foreach (Item item in inventory)
+        if (existingItem != null)
         {
-            Debug.Log($"Item ID: {item.id}, Number: {item.number}");
+            existingItem.quantity += quantity;
         }
+        else
+        {
+            inventory.Add(new InventoryItem(item, quantity));
+        }
+    }
+
+    public List<InventoryItem> GetInventory()
+    {
+        return inventory;
     }
 }

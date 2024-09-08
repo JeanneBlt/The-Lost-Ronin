@@ -18,7 +18,6 @@ public class InventoryController : MonoBehaviour
         display = GetComponent<InventoryDisplay>();
 
         manager = GameManager.GetInstance();
-        // InputsManager.instance.interactionEvent.AddListener(Inventory);
 
         data.Init(this);
         display.Init(this);
