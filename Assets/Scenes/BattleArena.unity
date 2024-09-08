@@ -680,6 +680,12 @@ MonoBehaviour:
   interactionEvent:
     m_PersistentCalls:
       m_Calls: []
+  dialogEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  inventoryEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &633911363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1003,8 +1009,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -48.113, y: -34}
-  m_SizeDelta: {x: 96.226, y: 30}
+  m_AnchoredPosition: {x: -50, y: -10}
+  m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &829994215
 MonoBehaviour:
@@ -1538,8 +1544,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -48.113, y: 20.985}
-  m_SizeDelta: {x: 96.226, y: 30}
+  m_AnchoredPosition: {x: -50, y: 20}
+  m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1205956077
 MonoBehaviour:
@@ -1689,7 +1695,6 @@ MonoBehaviour:
     content: I told you to never come back
   - charName: You
     content: ...
-  battleSystemManager: {fileID: 2013806949}
 --- !u!61 &1221618094
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2878,7 +2883,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1917341413
 RectTransform:
   m_ObjectHideFlags: 0
