@@ -32,22 +32,14 @@ public class Chest : InteractableObjects
         }
     }
 
-    //private void EmptyChest()
-    //{
-    //    foreach (var item in content) 
-    //    {
-    //        CharacterInfos.AddItem(item.id, item.number);
-    //        item.number = 0;
-    //    }
-    //}
-
     private void EmptyChest()
     {
         foreach (var chestItem in content)
         {
-            CharacterInfos.AddItemToInventory(chestItem.itemTemplate);
+            CharacterInfos characterInfos = FindObjectOfType<CharacterInfos>();
+            characterInfos.AddItemToInventory(chestItem.itemTemplate, chestItem.quantity);
 
-            UnityEngine.Debug.Log($"Ajout de {chestItem.itemTemplate.ItemName} dans l'inventaire");
+            UnityEngine.Debug.Log($"Ajout de {chestItem.itemTemplate.ItemName} ({chestItem.quantity}) dans l'inventaire");
         }
     }
 }

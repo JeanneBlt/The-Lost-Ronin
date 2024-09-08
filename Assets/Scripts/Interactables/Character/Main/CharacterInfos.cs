@@ -3,45 +3,22 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 
-public enum ItemID
-{
-    HealthPotion = 0,
-}
-
 [System.Serializable]
-public class Item
+public class InventoryItem
 {
-    [SerializeField] private string name;
+    public ItemTemplate itemTemplate;
+    public int quantity;
 
-    public ItemID id;
-
-    public int number = 0;
+    public InventoryItem(ItemTemplate template, int qty)
+    {
+        itemTemplate = template;
+        quantity = qty;
+    }
 }
 
 public class CharacterInfos : MonoBehaviour
 {
-    //public static Item[] inventory;
-    //private GameManager manager;
-
-    //void Start()
-    //{
-    //    manager = GameManager.GetInstance();
-    //    inventory = new Item[1];
-    //    inventory[0]=new Item();
-    //}
-
-    //public static void AddItem(ItemID _id, int _number) 
-    //{
-    //    inventory[((int )_id)].number += _number;
-
-    //    Debug.Log("Inventory:");
-    //    foreach (Item item in inventory)
-    //    {
-    //        Debug.Log($"Item ID: {item.id}, Number: {item.number}");
-    //    }
-    //}
-
-    public static List<ItemTemplate> inventory = new List<ItemTemplate>();
+    [SerializeField] public List<InventoryItem> inventory = new List<InventoryItem>();
     private GameManager manager;
 
     void Start()
@@ -49,18 +26,33 @@ public class CharacterInfos : MonoBehaviour
         manager = GameManager.GetInstance();
     }
 
-    public static void AddItemToInventory(ItemTemplate item)
+    public void AddItemToInventory(ItemTemplate item, int quantity)
     {
-        inventory.Add(item);
-        UnityEngine.Debug.Log($"Ajouté : {item.ItemName} dans l'inventaire");
+        InventoryItem existingItem = inventory.Find(i => i.itemTemplate == item);
+
+        if (existingItem != null)
+        {
+            existingItem.quantity += quantity;
+        }
+        else
+        {
+            inventory.Add(new InventoryItem(item, quantity));
+        }
+
+        UnityEngine.Debug.Log($"Ajouté : {item.ItemName} ({quantity}) dans l'inventaire");
     }
 
-    public static void ShowInventory()
+    public List<InventoryItem> GetInventory()
+    {
+        return inventory;
+    }
+
+    public void ShowInventory()
     {
         UnityEngine.Debug.Log("Inventaire:");
         foreach (var item in inventory)
         {
-            UnityEngine.Debug.Log(item.ItemName);
+            UnityEngine.Debug.Log($"{item.itemTemplate.ItemName} - Quantité : {item.quantity}");
         }
     }
 }
