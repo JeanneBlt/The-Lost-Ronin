@@ -34,6 +34,7 @@ public class CharacterInfos : MonoBehaviour
         {
             existingItem.quantity += quantity;
         }
+
         else
         {
             inventory.Add(new InventoryItem(item, quantity));
