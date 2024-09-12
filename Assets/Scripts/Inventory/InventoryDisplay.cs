@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 
 public class InventoryDisplay : MonoBehaviour
@@ -23,10 +24,16 @@ public class InventoryDisplay : MonoBehaviour
 
     public void UpdateDisplay(SlotsInfos[] pSlotInfos)
     {
-        for(int i = 0; i < pSlotInfos.Length;i++)
+        for (int i = 0; i < slots.Length; i++)
         {
-            slots[i].UpdateDisplay(pSlotInfos[i].ItemName, pSlotInfos[i].Number);
+            if (i < pSlotInfos.Length && slots[i] != null)
+            {
+                slots[i].UpdateDisplay(pSlotInfos[i].ItemName, pSlotInfos[i].Number);
+            }
+            else if (slots[i] != null) // If there are more slots than items
+            {
+                slots[i].UpdateDisplay(null, 0);
+            }
         }
-
     }
 }

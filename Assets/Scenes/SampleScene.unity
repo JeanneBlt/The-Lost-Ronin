@@ -3273,9 +3273,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotNumber: 6
   slotsInfos: []
-  templates:
+  template:
   - {fileID: 11400000, guid: 9b3865ef9b4be7a4b81f00b10239034f, type: 2}
-  - {fileID: 11400000, guid: 55293262e0bf82247948448cd5fa0a67, type: 2}
 --- !u!114 &630676426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7493,7 +7492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6987340669283092968, guid: 0d86d47fe7b638f4f95984242fce7290, type: 3}
       propertyPath: content.Array.data[0].quantity
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6987340669283092968, guid: 0d86d47fe7b638f4f95984242fce7290, type: 3}
       propertyPath: content.Array.data[0].itemTemplate
