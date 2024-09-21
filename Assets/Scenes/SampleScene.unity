@@ -2727,7 +2727,7 @@ GameObject:
   - component: {fileID: 262988379}
   - component: {fileID: 262988381}
   - component: {fileID: 262988382}
-  - component: {fileID: 262988383}
+  - component: {fileID: 262988384}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2814,7 +2814,7 @@ MonoBehaviour:
   inventoryEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &262988383
+--- !u!114 &262988384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2823,10 +2823,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 262988378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea47bcba904934c47bb47d3aaef7a39c, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b7c5c5cd65929b498a19b441aaeddcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryUI: {fileID: 630676417}
+  inventory: []
 --- !u!4 &342425541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3470231269459212249, guid: 0d86d47fe7b638f4f95984242fce7290, type: 3}
@@ -3299,6 +3299,7 @@ GameObject:
   - component: {fileID: 676175011}
   - component: {fileID: 676175010}
   - component: {fileID: 676175009}
+  - component: {fileID: 676175013}
   m_Layer: 5
   m_Name: --- UI ---
   m_TagString: Untagged
@@ -3389,6 +3390,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &676175013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676175008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea47bcba904934c47bb47d3aaef7a39c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 630676417}
 --- !u!1 &686277203
 GameObject:
   m_ObjectHideFlags: 0
@@ -7019,7 +7033,6 @@ GameObject:
   - component: {fileID: 1350642100}
   - component: {fileID: 1350642101}
   - component: {fileID: 1350642102}
-  - component: {fileID: 1350642103}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -7214,19 +7227,6 @@ MonoBehaviour:
   playerStatus: {fileID: 11400000, guid: 04ef235ff5c9588458c9c58ecd78cd9b, type: 2}
   enemyStatus: {fileID: 11400000, guid: 8b487052f8b2a694ba5cea6e9ebb210e, type: 2}
   isAttacked: 0
---- !u!114 &1350642103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350642095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b7c5c5cd65929b498a19b441aaeddcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: []
 --- !u!1 &1372611041
 GameObject:
   m_ObjectHideFlags: 0
