@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class BattleSystemManager : MonoBehaviour
@@ -119,8 +120,23 @@ public class BattleSystemManager : MonoBehaviour
         // allow only a single action per turn
         if (!hasClicked)
         {
-            Debug.Log("you attack!");
+            UnityEngine.Debug.Log("you attack!");
             StartCoroutine(PlayerAttack());
+
+            // block user from repeatedly 
+            // pressing attack button  
+            hasClicked = true;
+        }
+    }
+
+    public void OnItemButtonPress()
+    {
+        if (battleState != BattleState.PLAYERTURN)
+            return;
+
+        if (!hasClicked)
+        {
+            //StartCoroutine(PlayerItem());
 
             // block user from repeatedly 
             // pressing attack button  
@@ -148,7 +164,7 @@ public class BattleSystemManager : MonoBehaviour
             // if the enemy health drops to 0 
             // we won!
             battleState = BattleState.WIN;
-            Debug.Log("You won!");
+            UnityEngine.Debug.Log("You won!");
             yield return StartCoroutine(EndBattle());
         }
         else
@@ -202,7 +218,7 @@ public class BattleSystemManager : MonoBehaviour
             // of message or play a victory fanfare
             // here
             yield return new WaitForSeconds(1);
-            Debug.Log("win");
+            UnityEngine.Debug.Log("win");
             CharacterMotor characterMotor = GetComponent<CharacterMotor>();
             CharacterMotor.speed = 5f;
             LevelLoader.instance.LoadLevel("SampleScene");
@@ -216,7 +232,7 @@ public class BattleSystemManager : MonoBehaviour
             // you may wish to display some kind
             // of message or play a sad tune here!
             yield return new WaitForSeconds(1);
-            Debug.Log("lost");
+            UnityEngine.Debug.Log("lost");
             CharacterMotor characterMotor = GetComponent<CharacterMotor>();
             CharacterMotor.speed = 5f;
             LevelLoader.instance.LoadLevel("SampleScene");

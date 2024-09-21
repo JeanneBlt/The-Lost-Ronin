@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 [System.Serializable]
@@ -34,7 +33,6 @@ public class CharacterInfos : MonoBehaviour
         {
             existingItem.quantity += quantity;
         }
-
         else
         {
             inventory.Add(new InventoryItem(item, quantity));
