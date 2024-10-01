@@ -111,6 +111,7 @@ public class BattleSystemManager : MonoBehaviour
     IEnumerator PlayerTurn()
     {
         yield return new WaitForSeconds(1);
+        UnityEngine.Debug.Log("it's your turn");
 
         hasClicked = false;
     }
@@ -155,9 +156,15 @@ public class BattleSystemManager : MonoBehaviour
             {
                 LevelLoader.instance.levelInventory.Remove(healthPotion);
             }
+        yield return new WaitForSeconds(2);
         UnityEngine.Debug.Log("heal");
         playerStatusHUD.SetHP(playerStatus, -50);
         yield return StatusHUD.statusBarCoroutine;
+
+        if (playerStatus.health > 100)
+        {
+            playerStatus.health = 100;
+        }
 
         }
 
@@ -196,9 +203,9 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
+        yield return new WaitForSeconds(2);
         UnityEngine.Debug.Log("ennemy attack");
         playerStatusHUD.SetHP(playerStatus, 10);
-        yield return new WaitForSeconds(2);
 
         if (playerStatus.health <= 0)
         {

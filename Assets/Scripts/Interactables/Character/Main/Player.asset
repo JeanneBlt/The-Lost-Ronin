@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charName: Player
   position:
-  - 6.7324667
-  - 0.073529795
+  - 6.2870264
+  - 0.4220579
   characterGameObject: {fileID: 7968549352992539574, guid: 25cffa4406d7da544b5177c789b31297, type: 3}
   level: 1
   maxHealth: 100
   maxMana: 100
-  health: 20
+  health: 70
   mana: 100
   characterSprite: {fileID: -740959101, guid: dea7e3047dac6a34c8f4b608cebb33d8, type: 3}
   joinParty: 0
