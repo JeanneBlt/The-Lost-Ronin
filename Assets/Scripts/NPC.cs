@@ -39,6 +39,7 @@ public class NPC : MonoBehaviour
         {
             currentID=-1;
             uiDialog.CloseDialog();
+            Destroy(gameObject);
         }
     }
 }

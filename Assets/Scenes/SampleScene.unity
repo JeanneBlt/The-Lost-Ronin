@@ -2727,7 +2727,7 @@ GameObject:
   - component: {fileID: 262988379}
   - component: {fileID: 262988381}
   - component: {fileID: 262988382}
-  - component: {fileID: 262988384}
+  - component: {fileID: 262988383}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2814,7 +2814,7 @@ MonoBehaviour:
   inventoryEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &262988384
+--- !u!114 &262988383
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
