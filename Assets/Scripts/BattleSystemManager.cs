@@ -1,13 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
+
+public enum BattleState
+{
+    START,
+    PLAYERTURN,
+    ENEMYTURN,
+    WIN,
+    LOST
+}
 
 public class BattleSystemManager : MonoBehaviour
 {
     public NPC npc;
 
-    [SerializeField] private Canvas battleCanvas; 
+    [SerializeField] private Canvas battleCanvas;
 
     private GameObject enemy;
     private GameObject player;
@@ -47,12 +55,14 @@ public class BattleSystemManager : MonoBehaviour
     {
         Sprite enemySprite = enemyStatus.characterSprite;
 
-        enemy = Instantiate(enemyStatus.characterGameObject, enemyBattlePosition); enemy.SetActive(true);
+        enemy = Instantiate(enemyStatus.characterGameObject, enemyBattlePosition);
+        enemy.SetActive(true);
         SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
         enemySpriteRenderer.sprite = enemySprite;
 
         Sprite playerSprite = playerStatus.characterSprite;
-        player = Instantiate(playerStatus.characterGameObject.transform.GetChild(0).gameObject, playerBattlePosition); player.SetActive(true);
+        player = Instantiate(playerStatus.characterGameObject.transform.GetChild(0).gameObject, playerBattlePosition);
+        player.SetActive(true);
         SpriteRenderer playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
         playerSpriteRenderer.sprite = playerSprite;
 
@@ -67,7 +77,6 @@ public class BattleSystemManager : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         // fade in our characters sprites
-
         yield return StartCoroutine(FadeInOpponents());
 
         yield return new WaitForSeconds(2);
@@ -75,7 +84,7 @@ public class BattleSystemManager : MonoBehaviour
         // player turn!
         battleState = BattleState.PLAYERTURN;
 
-        // let player select his action now!    
+        // let player select his action now!
         yield return StartCoroutine(PlayerTurn());
     }
 
@@ -101,109 +110,103 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator PlayerTurn()
     {
-        // probably display some message 
-        // stating it's player's turn here
         yield return new WaitForSeconds(1);
 
-        // release the blockade on clicking 
-        // so that player can click on 'attack' button    
         hasClicked = false;
     }
 
     public void OnAttackButtonPress()
     {
-        // don't allow player to click on 'attack'
-        // button if it's not his turn!
         if (battleState != BattleState.PLAYERTURN)
             return;
 
-        // allow only a single action per turn
         if (!hasClicked)
         {
             UnityEngine.Debug.Log("you attack!");
             StartCoroutine(PlayerAttack());
-
-            // block user from repeatedly 
-            // pressing attack button  
             hasClicked = true;
         }
     }
 
-    public void OnItemButtonPress()
+    public void OnHealButtonPress()
     {
         if (battleState != BattleState.PLAYERTURN)
             return;
 
         if (!hasClicked)
         {
-            //StartCoroutine(PlayerItem());
-
-            // block user from repeatedly 
-            // pressing attack button  
-            hasClicked = true;
+                StartCoroutine(UseHealthPotion());
+                hasClicked = true;
         }
     }
 
-    IEnumerator PlayerAttack()
+    IEnumerator UseHealthPotion()
     {
-        // trigger the execution of attack animation
-        // in 'BattlePresence' animator
 
-        //player.GetComponent<Animator>().SetTrigger("Attack");
+        InventoryItem healthPotion = LevelLoader.instance.levelInventory.Find(i =>
+            i.itemTemplate != null &&
+            i.itemTemplate.ItemName == "Health Potion");
 
-        yield return new WaitForSeconds(2);
+        if (healthPotion != null && healthPotion.quantity > 0)
+        {
+            healthPotion.quantity--;
 
-        // decrease enemy health by a fixed
-        // amount of 10. You probably want to have some
-        // more complex logic here.
-        enemyStatusHUD.SetHP(enemyStatus, 50);
+            if (healthPotion.quantity == 0)
+            {
+                LevelLoader.instance.levelInventory.Remove(healthPotion);
+            }
+        UnityEngine.Debug.Log("heal");
+        playerStatusHUD.SetHP(playerStatus, -50);
         yield return StatusHUD.statusBarCoroutine;
+
+        }
 
         if (enemyStatus.health <= 0)
         {
-            // if the enemy health drops to 0 
-            // we won!
             battleState = BattleState.WIN;
             UnityEngine.Debug.Log("You won!");
             yield return StartCoroutine(EndBattle());
         }
         else
         {
-            // if the enemy health is still
-            // above 0 when the turn finishes
-            // it's enemy's turn!
             battleState = BattleState.ENEMYTURN;
             yield return StartCoroutine(EnemyTurn());
         }
+    }
 
+    IEnumerator PlayerAttack()
+    {
+        yield return new WaitForSeconds(2);
+
+        enemyStatusHUD.SetHP(enemyStatus, 50);
+        yield return StatusHUD.statusBarCoroutine;
+
+        if (enemyStatus.health <= 0)
+        {
+            battleState = BattleState.WIN;
+            UnityEngine.Debug.Log("You won!");
+            yield return StartCoroutine(EndBattle());
+        }
+        else
+        {
+            battleState = BattleState.ENEMYTURN;
+            yield return StartCoroutine(EnemyTurn());
+        }
     }
 
     IEnumerator EnemyTurn()
     {
-        // as before, decrease playerhealth by a fixed
-        // amount of 10. You probably want to have some
-        // more complex logic here.
+        UnityEngine.Debug.Log("ennemy attack");
         playerStatusHUD.SetHP(playerStatus, 10);
-
-        // play attack animation by triggering
-        // it inside the enemy animator
-
-        //enemy.GetComponent<Animator>().SetTrigger("Attack");
-
         yield return new WaitForSeconds(2);
 
         if (playerStatus.health <= 0)
         {
-            // if the player health drops to 0 
-            // we have lost the battle...
             battleState = BattleState.LOST;
             yield return StartCoroutine(EndBattle());
         }
         else
         {
-            // if the player health is still
-            // above 0 when the turn finishes
-            // it's our turn again!
             battleState = BattleState.PLAYERTURN;
             yield return StartCoroutine(PlayerTurn());
         }
@@ -211,34 +214,17 @@ public class BattleSystemManager : MonoBehaviour
 
     IEnumerator EndBattle()
     {
-        // check if we won
         if (battleState == BattleState.WIN)
         {
-            // you may wish to display some kind
-            // of message or play a victory fanfare
-            // here
             yield return new WaitForSeconds(1);
             UnityEngine.Debug.Log("win");
-            CharacterMotor characterMotor = GetComponent<CharacterMotor>();
-            CharacterMotor.speed = 5f;
             LevelLoader.instance.LoadLevel("SampleScene");
         }
-        // otherwise check if we lost
-        // You probably want to display some kind of
-        // 'Game Over' screen to communicate to the 
-        // player that the game is lost
         else if (battleState == BattleState.LOST)
         {
-            // you may wish to display some kind
-            // of message or play a sad tune here!
             yield return new WaitForSeconds(1);
             UnityEngine.Debug.Log("lost");
-            CharacterMotor characterMotor = GetComponent<CharacterMotor>();
-            CharacterMotor.speed = 5f;
             LevelLoader.instance.LoadLevel("SampleScene");
         }
     }
-
 }
-
-public enum BattleState { START, PLAYERTURN, ENEMYTURN, WIN, LOST }
